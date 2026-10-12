@@ -1,0 +1,13 @@
+{
+  "name": "personal-portfolio-project",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "npm --prefix frontend install && npm --prefix backend install",
+    "dev:client": "npm --prefix frontend run dev",
+    "dev:server": "npm --prefix backend run dev",
+    "build:client": "npm --prefix frontend run build",
+    "start": "npm --prefix backend start"
+  }
+}
+

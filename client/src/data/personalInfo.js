@@ -28,8 +28,8 @@ export const personalInfo = {
     "Open Source Exploration"
   ],
   socials: {
-    github: "https://github.com/alexnguyen-dev",
-    linkedin: "https://linkedin.com/in/alexnguyen-dev",
+    github: "https://github.com/HeriusCode",
+    linkedin: "https://www.linkedin.com/in/duy-nguyễn-81710b36a",
     facebook: "https://facebook.com/alexnguyen.dev"
   },
   stats: [

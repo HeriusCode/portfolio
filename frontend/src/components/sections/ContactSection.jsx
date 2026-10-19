@@ -66,11 +66,11 @@ export function ContactSection({ showToast }) {
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-28 relative z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-8 sm:py-10 lg:py-12 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-5 lg:px-6">
         
         {/* Section Heading */}
-        <div className="flex flex-col items-center text-center mb-14 sm:mb-18">
+        <div className="flex flex-col items-center text-center mb-8 sm:mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-primaryCyan/20 text-primaryCyan text-xs font-mono font-semibold tracking-wider uppercase mb-3">
             <Smartphone className="w-3.5 h-3.5" />
             <span>Instant Mobile Gateway</span>

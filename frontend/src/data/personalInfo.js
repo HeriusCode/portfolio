@@ -12,7 +12,7 @@ export const personalInfo = {
   avatar: "/avatar.png",
   status: "Available for Opportunities",
   location: "Da Nang, Vietnam",
-  email: "developer.alexnguyen@gmail.com",
+  email: "duy43976@gmail.com",
   education: {
     university: "Vietnam-Korea University of Information and Communication Technology (VKU)",
     degree: "Bachelor of Science in Information Technology",
@@ -28,9 +28,9 @@ export const personalInfo = {
     "Open Source Exploration"
   ],
   socials: {
-    github: "https://github.com/alexnguyen-dev",
-    linkedin: "https://linkedin.com/in/alexnguyen-dev",
-    facebook: "https://facebook.com/alexnguyen.dev"
+    github: "https://github.com/HeriusCode",
+    linkedin: "https://www.linkedin.com/in/duy-nguyễn-81710b36a",
+    facebook: "https://www.facebook.com/nguyen.quoc.duy.440087"
   },
   stats: [
     { label: "Years Coding", value: "3+" },

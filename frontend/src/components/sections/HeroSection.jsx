@@ -58,8 +58,8 @@ export function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center py-16 sm:py-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+    <section id="home" className="relative flex items-center justify-center pt-14 sm:pt-16 lg:pt-20 pb-0 overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-5 lg:px-6 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Column: Hero Text & CTAs (7 cols on lg) */}

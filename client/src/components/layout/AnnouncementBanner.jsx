@@ -1,8 +1,24 @@
-import React from 'react';
-import { Megaphone, Sparkles, RefreshCw, Radio } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Clock3, Megaphone, Sparkles, RefreshCw } from 'lucide-react';
+
+const formatCurrentTime = () => new Intl.DateTimeFormat('vi-VN', {
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false,
+}).format(new Date());
 
 export function AnnouncementBanner({ banner, onOpenAdmin }) {
   const { message, loading, error, isFallback } = banner;
+  const [currentTime, setCurrentTime] = useState(formatCurrentTime);
+
+  useEffect(() => {
+    const clockInterval = window.setInterval(() => {
+      setCurrentTime(formatCurrentTime());
+    }, 1000);
+
+    return () => window.clearInterval(clockInterval);
+  }, []);
 
   return (
     <aside 
@@ -39,17 +55,20 @@ export function AnnouncementBanner({ banner, onOpenAdmin }) {
               <span>Checking latest server announcement...</span>
             </div>
           ) : (
-            <div className="marquee-content flex items-center gap-12 whitespace-nowrap will-change-transform">
-              {/* Marquee duplicate loops for seamless infinite scrolling */}
-              {[1, 2, 3].map((key) => (
-                <div key={key} className="flex items-center gap-3 shrink-0">
-                  <Sparkles className="w-3.5 h-3.5 text-secondaryPurple shrink-0" />
-                  <span className="text-xs sm:text-sm font-medium tracking-wide text-textPrimary">
-                    {message}
-                  </span>
-                  <span className="text-xs text-primaryCyan/60 px-2 py-0.5 rounded-full bg-primaryCyan/10 border border-primaryCyan/20">
-                    Live Broadcast
-                  </span>
+            <div className="marquee-content whitespace-nowrap will-change-transform">
+              {[1, 2].map((segment) => (
+                <div key={segment} className="marquee-segment" aria-hidden={segment === 2}>
+                  {[1, 2, 3].map((item) => (
+                    <div key={item} className="flex items-center gap-3 shrink-0 px-6">
+                      <Sparkles className="w-3.5 h-3.5 text-secondaryPurple shrink-0" />
+                      <span className="text-xs sm:text-sm font-medium tracking-wide text-textPrimary">
+                        {message}
+                      </span>
+                      <span className="text-xs text-primaryCyan/60 px-2 py-0.5 rounded-full bg-primaryCyan/10 border border-primaryCyan/20">
+                        Live Broadcast
+                      </span>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>
@@ -64,8 +83,10 @@ export function AnnouncementBanner({ banner, onOpenAdmin }) {
           className="text-[11px] text-textSecondary hover:text-primaryCyan flex items-center gap-1.5 transition-colors group"
           title="Admin Control"
         >
-          <Radio className="w-3 h-3 text-secondaryPurple group-hover:text-primaryCyan animate-pulse" />
-          <span className="hidden lg:inline text-gray-300">Admin Live</span>
+          <Clock3 className="w-3 h-3 text-secondaryPurple group-hover:text-primaryCyan" />
+          <time className="hidden sm:inline tabular-nums text-gray-300" dateTime={new Date().toISOString()}>
+            {currentTime}
+          </time>
         </button>
       </div>
 
@@ -75,7 +96,17 @@ export function AnnouncementBanner({ banner, onOpenAdmin }) {
           -webkit-mask-image: linear-gradient(to right, transparent, black 40px, black calc(100% - 40px), transparent);
         }
         .marquee-content {
-          animation: continuousMarquee 26s linear infinite;
+          display: flex;
+          width: max-content;
+          min-width: 200%;
+          animation: continuousMarquee 22s linear infinite;
+        }
+        .marquee-segment {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          flex: 0 0 50%;
+          min-width: 50%;
         }
         .marquee-content:hover {
           animation-play-state: paused;
@@ -85,7 +116,7 @@ export function AnnouncementBanner({ banner, onOpenAdmin }) {
             transform: translateX(0%);
           }
           100% {
-            transform: translateX(-33.333333%);
+            transform: translateX(-50%);
           }
         }
       `}</style>

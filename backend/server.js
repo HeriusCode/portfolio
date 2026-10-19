@@ -5,6 +5,7 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { env } from './config/env.js';
 import apiRouter from './routes/api.js';
+import { startPushbulletBannerService } from './services/pushbulletBannerService.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -68,6 +69,10 @@ const server = app.listen(env.PORT, '0.0.0.0', () => {
   console.log(`📡 Network Host: 0.0.0.0:${env.PORT}`);
   console.log(`📁 Environment:  ${env.NODE_ENV}`);
   console.log('====================================================');
+});
+
+startPushbulletBannerService().catch((error) => {
+  console.error('[Pushbullet Banner] Startup failed:', error);
 });
 
 process.on('SIGTERM', () => {
